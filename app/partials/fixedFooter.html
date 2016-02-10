@@ -1,0 +1,18 @@
+<footer class="fixed-footer" ng-show="user.Type!='TempCustomer' && user.Permissions.contains('ViewSelfAdmin')">
+    <div>
+        <div class="row col-xs-12">
+            <ul>
+                <li><a href="catalog">Products</a></li>
+                <li class="dim">|</li>
+                <li><a href="contactus">Store Support</a></li>
+                <li ng-show="user.Type =='TempCustomer'" class="dim">|</li>
+                <li ng-show="user.Type =='TempCustomer'"><a href="admin">Log In</a></li>
+                <li ng-show="user.Type !='TempCustomer'" class="dim">|</li>
+                <li ng-show="user.Type !='TempCustomer'"><a href="admin">My Account</a></li>
+            </ul>
+        </div>
+        <div class="row col-xs-12">
+            <small class="dim">Powered by <a target="_blank" href="//www.robynpromo.com">Robyn Promotion</a></small>
+        </div>
+    </div>
+</footer>
