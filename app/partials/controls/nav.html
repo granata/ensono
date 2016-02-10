@@ -12,13 +12,13 @@
             <span class="icon-bar"></span>
         </button>
         <div class="mobile_logo">
-            <a class="" href="catalog">
-                <img src="https://www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/American%20Fidelity/media/spot.png">
+            <a class="" href="./ROBYN_VIP_ROBYN_files/ROBYN_VIP_ROBYN.html">
+                <img ng-src="https://www.four51.com/Images/Company/77a28d8a242346efad8963f74165eda3.png" src="./ROBYN_VIP_ROBYN_files/77a28d8a242346efad8963f74165eda3.png">
             </a>
         </div>
         <div class="cart ng-hide" ng-show="TotalQty && user.CurrentOrderID" ng-class="{'active': isActive(['cart', 'checkout', 'checkoutGuest'])}">
                 
-                <a id="451qa_cart_link" class="cart" href="/store/cart">
+                <a id="451qa_cart_link" class="cart" href="https://robynbasedev.four51ordercloud.com/store/cart">
                 <span class="badge ng-binding" ng-bind="TotalQty"></span>
                 <i class="fa fa-shopping-cart hidden-xs"></i>
                 <i class="fa fa-caret-down hidden-xs"></i>
@@ -43,13 +43,7 @@
             <li class="products" ng-class="{'active': isInPath('catalog') || isInPath('product') || isInPath('cart/default') || isInPath('search')}">
                                 <a id="451qa_home_link" ng-show="Four51User.isAuthenticated()" href="catalog">
                                     <i class="fa fa-home hidden-sm hidden-md hidden-lg"></i>
-                                    <span class="ng-binding">{{'Products' | rc}}</span>
-                                </a>
-                            </li>
-            <li class="contactus" ng-class="{'active': isInPath('contactus')}">
-                                <a id="451qa_contactus_link" ng-show="Four51User.isAuthenticated()" href="contactus">
-                                    <i class="fa fa-phone hidden-sm hidden-md hidden-lg"></i>
-                                    <span class="ng-binding">Contact Us</span>
+                                    <span class="ng-binding">Products</span>
                                 </a>
                             </li>
 
@@ -59,46 +53,51 @@
                 <span class="ng-binding">My Account</span> <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     <li ng-show="user.Type=='TempCustomer'"> class="ng-hide">
-                        <a class="admin" href="/store/admin">
+                        <a class="admin" href="https://robynbasedev.four51ordercloud.com/store/admin">
                             <i class="fa fa-sign-in text-info"></i>
                             <span class="ng-binding">Log In</span>
                         </a>
                     </li>
                     <li ng-show="user.Type!='TempCustomer' && user.Permissions.contains('ViewSelfAdmin')" id="451qa_user_link" class="admin">
-                        <a href="/store/admin">
+                        <a href="https://robynbasedev.four51ordercloud.com/store/admin">
                             <i class="fa fa-cog "></i>
                             <span class="ng-binding">User Information</span>
                         </a>
                     </li>
                    
                     <li id="451qa_addy_link" class="addresses" ng-show="user.Type!='TempCustomer'">
-                        <a href="/store/addresses">
+                        <a href="https://robynbasedev.four51ordercloud.com/store/addresses">
                             <i class="fa fa-building"></i>
                             <span class="ng-binding">Addresses</span>
                         </a>
                     </li>
                     <li id="451qa_mesg_link" ng-show="user.Type!='TempCustomer' && user.Permissions.contains('ViewMessaging')" class="messages ng-hide">
-                        <a href="store/message">
+                        <a href="https://robynbasedev.four51ordercloud.com/store/message">
                             <i class="fa fa-envelope-o hidden-xs"></i>
                             <span class="hidden-xs ng-binding">Messages</span>
                         </a>
                     </li>
                     <li class="order" ng-show="user.Type!='TempCustomer'">
-                        <a id="451qa_order_link" href="/store/order">
+                        <a id="451qa_order_link" href="https://robynbasedev.four51ordercloud.com/store/order">
                             <i class="fa fa-clipboard"></i>
                             <span class="ng-binding">Order History</span>
                         </a>
                     </li>
                     <!-- ngIf: user.Permissions.contains('AdvancedReporting') -->
                     <li class="favorites" ng-show="user.Type!='TempCustomer'">
-                        <a id="451qa_fave_link" href="/store/favoriteorders">
+                        <a id="451qa_fave_link" href="https://robynbasedev.four51ordercloud.com/store/favoriteorders">
                             <i class="fa fa-heart"></i>
                             <span class="ng-binding">Favorites</span>
                         </a>
                     </li>
+                    <!--<li id="451qa_mesg_link" ng-show="user.Permissions.contains('ViewContactUs')" class="contactus">
+                                        <a href="contactus">
+                                            {{'Contact Us' | r}}
+                                        </a>
+                                    </li>-->
                     <!--<li class="divider"></li>-->
                     <li ng-show="user.Type!='TempCustomer'" class="logout">
-                        <a href="/store/#" class="451_btn_logout" ng-click="Logout()">
+                        <a href="https://robynbasedev.four51ordercloud.com/store/#" class="451_btn_logout" ng-click="Logout()">
                             <i class="fa fa-sign-out text-info"></i>
                             <span class="ng-binding">Sign out</span>
                         </a>
@@ -114,9 +113,18 @@
                 <ul class="451qa_topnav dropdown-menu">
                     <ul tree="tree" current="currentCategory" class="ng-isolate-scope transition_to_bottom">
                         <!-- ngRepeat: node in tree -->
-                        <li ng-repeat="node in tree" current="current" class="451_cat_item" ng-class="{'active':  current.InteropID == node.InteropID}"><a ng-href="catalog/{{node.InteropID}}" ng-bind-html="node.Name"></a></li>
+                        <li ng-repeat="node in tree" current="current" class="451_cat_item" ng-class="{'active':  current.InteropID == node.InteropID}"><a ng-href="catalog/{{node.InteropID}}" ng-bind-html="node.Name"></a>
                         <ul tree="node.SubCategories" current="current" class="ng-isolate-scope">
+                        <!--<li ng-repeat="c in node.SubCategories">{{JSON.stringify(c)}}</li>-->
+                       <li ng-repeat="c in node.SubCategories" current="current" class="451_cat_item" ng-class="{'active':  current.InteropID == c.InteropID}"><a ng-href="catalog/{{c.InteropID}}" ng-bind-html="c.Name"></a>
+                        </li>
                             <!-- ngRepeat: node in tree -->
+                            
+                        </ul>
+                        </li>
+                        <!--<li class="nav 451_cat_item ng-scope ng-isolate-scope" ng-class="{'active': current.InteropID == node.InteropID}" ng-repeat="node in tree" node="node" current="current"><a ng-href="catalog/rvip-apparel" ng-bind-html="node.Name" class="ng-binding ng-scope" href="https://robynbasedev.four51ordercloud.com/store/catalog/rvip-apparel">Apparel</a>-->
+                        
+                        </ul>
                         </ul>
                         </li>
                        
@@ -134,7 +142,7 @@
                     <ul class="logoNav">
                         <li class="logo">
                         	<a href="catalog">
-                                <img src="https://www.four51.com/Themes/Custom/0522be56-6d86-4457-a09b-6b8f04e094c1/American%20Fidelity/media/spot.png" />
+                                <img ng-src="{{user.Company.LogoUrl}}" />
                             </a>
                         </li>
                     </ul>
@@ -153,12 +161,6 @@
                                 <a id="451qa_home_link" ng-show="Four51User.isAuthenticated()" href="catalog">
                                     <i class="fa fa-home hidden-sm hidden-md hidden-lg"></i>
                                     <span class="hidden-xs">{{'Products' | rc}}</span>
-                                </a>
-                            </li>
-                            <li class="contactus" ng-class="{'active': isInPath('contactus')}">
-                                <a id="451qa_contactus_link" ng-show="Four51User.isAuthenticated()" href="contactus">
-                                    <i class="fa fa-phone hidden-sm hidden-md hidden-lg"></i>
-                                    <span class="hidden-xs">Contact Us</span>
                                 </a>
                             </li>
                             <!--<li class="order" ng-class="{'active': isActive('order'), 'active-xs': isActive('favoriteorders')}">
@@ -243,6 +245,11 @@
                                             <span class="hidden-xs">{{'Favorites' | r}}</span>
                                         </a>
                                     </li>
+                                    <!--<li id="451qa_mesg_link" ng-show="user.Permissions.contains('ViewContactUs')" class="contactus">
+                                        <a href="contactus">
+                                            {{'Contact Us' | r}}
+                                        </a>
+                                    </li>-->
                                     <li class="divider"></li>
                                     <li ng-show="user.Type!='TempCustomer'" class="logout">
                                         <a href="#"  class="451_btn_logout" ng-click="Logout()">
@@ -276,7 +283,8 @@
     </nav>
     <nav class="dropdown-mega">
         <a class="dropdown-toggle text-center" data-toggle="dropdown">
-        	<small>Product Categories</small><i class="fa fa-angle-down text-primary"></i>
+        	<small>Product Categories</small><br/>
+            <i class="fa fa-angle-down text-primary"></i>
         </a>
         <ul class="451qa_topnav dropdown-menu" >
             <categorytree tree='tree' current='currentCategory' />
