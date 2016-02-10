@@ -1,11 +1,12 @@
 <section>
-    <div class="col-collapse col-md-12">
-
+    <div class="col-collapse col-md-2 sideNav hidden-xs hidden-sm">
+        <nav class="nav 451qa_sidenav">
+                <categorytree tree='tree' current='currentCategory' />
+        </nav>
+    </div>
+    <div class="col-collapse col-md-offset-1 col-md-9">
         <categorylistview></categorylistview>
-
 		<loadingindicator ng-show="productLoadingIndicator && !currentCategory.SubCategories.length" title="{{'Please wait while we fetch all products' | r | xlat}}"/>
-
         <productlistview ng-show="!currentCategory.SubCategories.length"></productlistview>
-
     </div>
 </section>

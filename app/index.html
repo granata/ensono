@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="en" ng-app="451order" ng-controller="Four51Ctrl">
 <head>
-	<!--baseTagToken-->
-	<!--headscriptToken-->
+	<base href="/store/"/>
+	<script>var four51IsAnonUser = false;</script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Ensono Company Store</title>
+    <title>{{user.Company.Name}} | Powered by ROBYN</title>
 	<link rel="stylesheet" href="css/bootstrap-451.css" data-group="source" />
 	<link rel="stylesheet" href="css/editor.css" data-group="source" />
 	<link rel="stylesheet" href="css/custom.css" data-group="source" />
@@ -16,19 +16,33 @@
     <!--customfont (gotham alternative)-->
     <link rel="stylesheet" href="css/animate.min.css" />
       <link rel="stylesheet" href="https://d345spfe4d65od.cloudfront.net/static/tourmyapp/v1/tourmyapp.css" type="text/css">
+      
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js" data-group="cdn"></script>
+      <script>
+    $(document).ready(function(){
+        $(".navbar-collapse").collapse('hide');
+        $(document).click(function(event) {
+            if (!$(event.target).is('#navbar *, #navbar')){
+                $(".navbar-collapse").collapse('hide');
+            }
+        });
+    }); 
+</script>
+
+    <script type="text/javascript" charset="UTF-8" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body ng-cloak ng-class="ng-cloak">
 <section>
     <section ng-hide="Four51User.isAuthenticated() || isAnon" class="container">
         <login />
     </section>
-    <section ng-show="Four51User.isAuthenticated()" id="content">
+    <section ng-if="Four51User.isAuthenticated()" id="content">
         <section class="hidden-print">
             <navigation />
         </section>
-        <!--<section class="hidden-print">
+        <section class="hidden-print">
             <branding />
-        </section>-->
+        </section>
         <section class="container-view">
             <ng-view autoscroll />
         </section>
@@ -43,7 +57,9 @@
 <!--fixedfooter-->
 
     <!--<script type="text/javascript" src="//dl1d2m8ri9v3j.cloudfront.net/releases/1.2.4/tracker.js" data-customer="bfec7bded14d43a7ace2697594e1369d"></script>-->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js" data-group="cdn"></script>
+    <!--
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js" data-group="cdn"></script> -->
+    
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js" data-group="cdn"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-sanitize.min.js" data-group="cdn"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-cookies.min.js" data-group="cdn"></script>
@@ -65,6 +81,8 @@
     <script src="lib/angular/plugins/bootstrapLightbox.js" data-group="cdn"></script>
 
 	<script src="lib/oc/ordercloud-specforms.js" data-group="resources"></script>
+	<script src="lib/oc/ProductSearchInput.js" data-group="resources"></script>
+	<script src="lib/oc/carousel.js" data-group="resources"></script>
 	<script src="//cdn.ckeditor.com/4.4.7/basic/ckeditor.js" data-group="cdn"></script>	
 	
     <script src="//maps.googleapis.com/maps/api/js?libraries=places&sensor=false"></script>
@@ -155,7 +173,6 @@
     <script src="js/directives/customphonefield.js" data-group="source"></script>
     <script src="js/directives/customfilefield.js" data-group="source"></script>
     <script src="js/directives/approvalrulelist.js" data-group="source"></script>
-    <script src="js/directives/productsearchinput.js" data-group="source"></script>
     <script src="js/directives/tree.js" data-group="source"></script>
     <script src="js/directives/addressinput.js" data-group="source"></script>
     <script src="js/directives/reporting.js" data-group="source"></script>

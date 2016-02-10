@@ -1,10 +1,10 @@
-<footer class="fixed-footer" ng-show="user.Type!='TempCustomer' && user.Permissions.contains('ViewSelfAdmin')">
+<footer class="fixed-footer">
     <div>
         <div class="row col-xs-12">
             <ul>
-                <li><a href="catalog">Products</a></li>
+                <li><a href="catalog">Home</a></li>
                 <li class="dim">|</li>
-                <li><a href="contactus">Store Support</a></li>
+                <li><a href="contactus">Contact Us</a></li>
                 <li ng-show="user.Type =='TempCustomer'" class="dim">|</li>
                 <li ng-show="user.Type =='TempCustomer'"><a href="admin">Log In</a></li>
                 <li ng-show="user.Type !='TempCustomer'" class="dim">|</li>
